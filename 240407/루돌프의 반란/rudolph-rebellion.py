@@ -52,6 +52,8 @@ for turn in range(m):
                 closeSanta = i
                 minDistance = distense
     
+    if closeSanta == 0:
+        break
     # 루돌프 이동 방향
     s = santa[closeSanta]
     dy = 0
@@ -91,13 +93,6 @@ for turn in range(m):
                     board[nextSanta[y]][nextSanta[x]] = nextSanta[index] #그 자리에 놓음
                     santa[nextSanta[index]] = [nextSanta[y], nextSanta[x], nextSanta[state], nextSanta[index]] # 산타에 저장
                     nextSanta = []
-
-    # print(turn,"== Ru ====")
-    # for i in board:
-    #     print(i)
-    # print("santa:",santa)
-    # print(ry,rx)
-    # print("score: ",score)
 
     dList = [[-1,0], [0,1], [1,0], [0,-1]]
 
@@ -156,7 +151,7 @@ for turn in range(m):
         if s[state] != -1:
             score[i] +=1
     
-    # if turn+1>=3:
+    # if turn+1==7:
     #     print(turn+1,"== santa ====")
     #     for i in board:
     #         print(i)
