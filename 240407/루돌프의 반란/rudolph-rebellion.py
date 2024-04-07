@@ -76,7 +76,7 @@ for turn in range(m):
         board[ry][rx] = 0 # 그 자리 0
         score[s[index]]+=c # 점수 추가
 
-        nextSanta = [s[y]+dy*c, s[x]+dx*c, 2, s[index]]
+        nextSanta = [s[y]+(dy*c), s[x]+(dx*c), 2, s[index]]
 
         while len(nextSanta)>0:
             if nextSanta[y] <= 0 or nextSanta[y] > n or nextSanta[x] <= 0 or nextSanta[x] > n : #out
