@@ -95,6 +95,12 @@ for turn in range(m):
                     nextSanta = []
 
     dList = [[-1,0], [0,1], [1,0], [0,-1]]
+    # if turn+1>=3:
+    #     print(turn+1,"== rudolf ====")
+    #     for i in board:
+    #         print(i)
+    #     print(ry,rx)
+    #     print("score: ",score)
 
     #Santa turn
     for i in range(1,p+1):
@@ -115,27 +121,26 @@ for turn in range(m):
                     minDistance = nextDistance
                     closeDirc = [dirc[y],dirc[x]]
         
-        if len(closeDirc)==0: #nowhere to go
+        if len(closeDirc) == 0: #nowhere to go
             continue
 
         #move
         board[s[y]][s[x]] = 0  # remove santa
-        nextSanta = [s[y]+closeDirc[y], s[x]+closeDirc[x], s[state], s[index]]
-        if nextSanta[y]==ry and nextSanta[x]==rx:#루돌프 충돌
+        nextSanta = [s[y]+closeDirc[y], s[x]+closeDirc[x], 0, s[index]]
+        if nextSanta[y] == ry and nextSanta[x] == rx:#루돌프 충돌
             score[nextSanta[index]] += d # 점수 추가
-            nextSanta = [nextSanta[y]-closeDirc[y]*d, nextSanta[x]-closeDirc[x]*d, 2, nextSanta[index]] # 튕기는 위치
+            nextSanta = [nextSanta[y]- closeDirc[y] * d, nextSanta[x] - closeDirc[x] * d, 1, nextSanta[index]] # 튕기는 위치
 
             while len(nextSanta)>0:
                 if nextSanta[y] <= 0 or nextSanta[y] > n or nextSanta[x] <= 0 or nextSanta[x] > n : #out
-                    nextSanta[state] = -1 
-                    santa[nextSanta[index]] = [nextSanta[y], nextSanta[x], nextSanta[state], nextSanta[index]] # 산타에 저장
+                    santa[nextSanta[index]] = [nextSanta[y], nextSanta[x], -1, nextSanta[index]] # 산타에 저장
                     nextSanta = []
                 else: #in board
-                    if board[nextSanta[y]][nextSanta[x]] >0: # 그 자리에 누구 있음
+                    if board[nextSanta[y]][nextSanta[x]] > 0: # 그 자리에 누구 있음
                         nextIndex = board[nextSanta[y]][nextSanta[x]] # 튕겨져 나갈 놈
                         board[nextSanta[y]][nextSanta[x]] = nextSanta[index] #그 자리에 놓음
                         santa[nextSanta[index]] = [nextSanta[y], nextSanta[x], nextSanta[state], nextSanta[index]] # 산타에 저장
-                        nextSanta = [santa[nextIndex][y]-closeDirc[y], santa[nextIndex][x]-closeDirc[x], santa[nextIndex][state], nextIndex]
+                        nextSanta = [nextSanta[y]-closeDirc[y], nextSanta[x]-closeDirc[x], santa[nextIndex][state], nextIndex]
                     else: # 아무도 없음
                         board[nextSanta[y]][nextSanta[x]] = nextSanta[index] #그 자리에 놓음
                         santa[nextSanta[index]] = [nextSanta[y], nextSanta[x], nextSanta[state], nextSanta[index]] # 산타에 저장
@@ -151,13 +156,12 @@ for turn in range(m):
         if s[state] != -1:
             score[i] +=1
     
-    # if turn+1==7:
+    # if turn+1>=3:
     #     print(turn+1,"== santa ====")
     #     for i in board:
     #         print(i)
-    #     print("santa:",santa[1])
     #     print(ry,rx)
     #     print("score: ",score)
-    
+        
 for i in range(1,p+1):
     print(score[i],end=' ')
