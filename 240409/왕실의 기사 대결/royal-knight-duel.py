@@ -206,7 +206,7 @@ for turn in range(q):
 ret = 0
 for i in range(1,n+1):
     knightData = knight[i]
-    if knightData[k]>0:
+    if knightData[k] > 0:
         ret += firstKnightLife[i]-knightData[k]
 
 print(ret)
