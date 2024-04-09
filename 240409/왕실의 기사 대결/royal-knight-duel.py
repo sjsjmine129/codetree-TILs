@@ -184,9 +184,6 @@ def healFirstKinght(knightData, dirction):
 
 #do game -> main logic
 for turn in range(q):
-    print("====",turn)
-    for i in knight:
-        print(i)
     [i, d] = map(int, input().split())
     #기사 죽었는지 체크 -> 죽으면 스킵
     if knight[i][k] <= 0:
@@ -205,9 +202,6 @@ for turn in range(q):
     changeKinghtPosition(moveSet, d)
 
 
-for i in knight:
-    print(i)
-
 
 ret = 0
 for i in range(1,n+1):
@@ -216,4 +210,3 @@ for i in range(1,n+1):
         ret += firstKnightLife[i]-knightData[k]
 
 print(ret)
-printKnight()
