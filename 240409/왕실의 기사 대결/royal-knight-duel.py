@@ -140,7 +140,7 @@ def checkCanMove(knightData, dirction):
                 nextKnight.add(temp)
     
     for i in nextKnight:
-        temp = checkCanMove(knight[i],dirction)
+        temp = checkCanMove(knight[i], dirction)
         if len(temp) == 0:
             ret = set()
             return ret
@@ -184,12 +184,14 @@ def healFirstKinght(knightData, dirction):
 
 #do game -> main logic
 for turn in range(q):
+    print("====",turn)
+    for i in knight:
+        print(i)
     [i, d] = map(int, input().split())
     #기사 죽었는지 체크 -> 죽으면 스킵
     if knight[i][k] <= 0:
         continue
     
-
     # 움직일 수 있는지 체크
     moveSet = checkCanMove(knight[i],d)
     
@@ -199,9 +201,13 @@ for turn in range(q):
     
     #첫놈 미리 회복 시키기
     healFirstKinght(knight[i],d)
-
     # 이동시키기
     changeKinghtPosition(moveSet, d)
+
+
+for i in knight:
+    print(i)
+
 
 ret = 0
 for i in range(1,n+1):
@@ -210,3 +216,4 @@ for i in range(1,n+1):
         ret += firstKnightLife[i]-knightData[k]
 
 print(ret)
+printKnight()
