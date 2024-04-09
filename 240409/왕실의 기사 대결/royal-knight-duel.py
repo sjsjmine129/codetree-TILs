@@ -69,23 +69,26 @@ def calDamage(knightData):
             temp = board[knightData[r]+dy][knightData[c]+dx]
             if temp == 1:
                 ret += 1
+            # elif temp ==2:
+            #     print("ERROR")
     return ret
 
 # 기사 이동시키는 함수
 # 죽으면 빼버림 -> 쓰기전에 첫놈은 데미지만큼 회복 미리 시켜야함
 def changeKinghtPosition(knightList, dirction):
+    dx = 0
+    dy = 0
+    if dirction == 0:
+        dy = -1
+    elif dirction == 1:
+        dx = 1
+    elif dirction == 2:
+        dy = 1
+    elif dirction == 3:
+        dx = -1
+    
     for i in knightList:
         knightData = knight[i]
-        dx = 0
-        dy = 0
-        if dirction == 0:
-            dy = -1
-        elif dirction == 1:
-            dx = 1
-        elif dirction == 2:
-            dy = 1
-        elif dirction == 3:
-            dx = -1
 
         # 기사 보드에 기존 위치에서 지움
         changeKinghtBoardData(knightData, 0)
@@ -136,20 +139,22 @@ def checkCanMove(knightData, dirction):
                 return ret # do not move
             #기사가 있는지 체크
             temp = knightPosition[tempKinght[r]+i][tempKinght[c]+j]
-            if temp != 0 and temp != tempKinght[knightNum] and temp not in nextKnight:
+            if temp != 0 and temp != knightData[knightNum] and temp not in nextKnight:
                 nextKnight.add(temp)
-    
+
+    retKnight = set()
     for i in nextKnight:
         temp = checkCanMove(knight[i], dirction)
         if len(temp) == 0:
             ret = set()
             return ret
         else:
-            nextKnight.union(temp)
+            for j in temp:
+                retKnight.add(j)
 
-    nextKnight.add(knightData[knightNum])
+    retKnight.add(knightData[knightNum])
     #움직여야 하는 기사들 number
-    return nextKnight
+    return retKnight
 
 #첫놈 미리 회복 시키는 함수
 def healFirstKinght(knightData, dirction):
