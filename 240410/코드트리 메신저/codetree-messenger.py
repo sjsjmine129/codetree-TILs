@@ -25,7 +25,7 @@ def getChildList(node):
 def initChild(node, ch):
     if node.child1 == -1:
         node.child1 = ch
-    elif node.child2 == -1:
+    else:
         node.child2 = ch
 
 #add Child
@@ -33,7 +33,7 @@ def addChild(node, cnode):
     ch = cnode.me
     if node.child1 == -1:
         node.child1 = ch
-    elif node.child2 == -1:
+    else:
         node.child2 = ch
 
 #delete Child
@@ -41,7 +41,7 @@ def delChild(node, cnode):
     ch = cnode.me
     if node.child1 == ch:
         node.child1 = -1
-    elif node.child2 == ch:
+    else:
         node.child2 = -1
 
 
