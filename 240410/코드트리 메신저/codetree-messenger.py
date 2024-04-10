@@ -53,6 +53,11 @@ for i in range(1,n+1):
     tree[i].power = first[i+n]
     tree[i].parent = first[i]
     initChild(tree[first[i]],i)
+    temp = tree[first[i]]
+    if temp.child1 == -1:
+        temp.child1 = i
+    else:
+        temp.child2 = i
     tree[i].me = i
 
 
