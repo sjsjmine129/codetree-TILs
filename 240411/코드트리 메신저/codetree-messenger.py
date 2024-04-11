@@ -121,7 +121,21 @@ def changePower(index, newPower):
     node.power = newPower
 
     temp = max(powerBefore, newPower)
-    resetNotiNum(temp, tree[node.parent])
+    if powerBefore > newPower:
+        now = tree[node.parent]
+        for i in range(temp):
+            if i >= newPower:
+                now.getNoti -= 1
+            now = tree[now.parent]
+    elif powerBefore < newPower:
+        now = tree[node.parent]
+        for i in range(temp):
+            if i >= powerBefore:
+                now.getNoti += 1
+            now = tree[now.parent]
+
+    # temp = max(powerBefore, newPower)
+    # resetNotiNum(temp, tree[node.parent])
 
 #부모 교환
 def changeParent(index1, index2):
