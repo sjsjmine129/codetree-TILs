@@ -122,7 +122,7 @@ def changePower(index, newPower):
 
     temp = max(powerBefore, newPower)
     now = tree[node.parent]
-    for i in range(temp):
+    for i in range(temp-1):
         powerBefore -= 1
         newPower -= 1
 
