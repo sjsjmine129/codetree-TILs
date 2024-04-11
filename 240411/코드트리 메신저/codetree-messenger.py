@@ -112,7 +112,7 @@ def changeBlock(index):
     node.block = not node.block
 
     upperLevel = checkImpact(node)
-    resetNotiNum(upperLevel, tree[node.parent])
+    resetNotiNum(upperLevel+1, tree[node.parent])
 
 # 파워 바꾸기
 def changePower(index, newPower):
