@@ -117,11 +117,12 @@ def changeBlock(index):
 # 파워 바꾸기
 def changePower(index, newPower):
     node = tree[index]
-    powerBefore = node.power
+    impactBefore = checkImpact(node)
     node.power = newPower
+    impactAfter = checkImpact(node)
 
-    level = max(powerBefore, newPower, 0)
-    resetNotiNum(level, tree[node.parent])
+    temp = max(powerBefore, impactAfter)
+    resetNotiNum(temp, tree[node.parent])
 
 #부모 교환
 def changeParent(index1, index2):
@@ -168,11 +169,4 @@ for turn in range(q-1):
     elif order[0] == 400:
         changeParent(order[1],order[2])
     elif order[0] == 500:
-        ret = tree[order[1]].getNoti
-        if ret == 11 and num==1:
-            print(order[1])
-            printTree()
-
-        if ret == 11 and num == 0:
-            num+=1
         print(tree[order[1]].getNoti)
