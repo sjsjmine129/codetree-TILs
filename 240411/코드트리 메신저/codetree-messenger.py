@@ -117,11 +117,10 @@ def changeBlock(index):
 # 파워 바꾸기
 def changePower(index, newPower):
     node = tree[index]
-    impactBefore = checkImpact(node)
+    powerBefore = node.power
     node.power = newPower
-    impactAfter = checkImpact(node)
 
-    temp = max(impactBefore, impactAfter)
+    temp = max(powerBefore, newPower)
     resetNotiNum(temp, tree[node.parent])
 
 #부모 교환
