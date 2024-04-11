@@ -128,9 +128,8 @@ def changePower(index, newPower):
 
         if powerBefore < 0:
             now.getNoti +=1
-        elif newPower < 0:
-            if now.getNoti>0:
-                now.getNoti -=1
+        if newPower < 0:
+            now.getNoti -=1
 
         if now.parent == -1:
             break
