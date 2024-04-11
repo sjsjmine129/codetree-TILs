@@ -124,9 +124,9 @@ def changePower(index, newPower):
     now = tree[node.parent]
     for i in range(1,temp+1):
 
-        if powerBefore - temp <= 0:
+        if powerBefore - temp < 0:
             now.getNoti +=1
-        elif newPower - temp <= 0:
+        elif newPower - temp < 0:
             now.getNoti -=1
 
         if now.parent == -1:
