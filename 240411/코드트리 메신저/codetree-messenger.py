@@ -168,4 +168,7 @@ for turn in range(q-1):
     elif order[0] == 400:
         changeParent(order[1],order[2])
     elif order[0] == 500:
+        ret = tree[order[1]].getNoti
+        if ret == 11:
+            printTree()
         print(tree[order[1]].getNoti)
