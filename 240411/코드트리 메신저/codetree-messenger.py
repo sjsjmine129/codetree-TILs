@@ -120,7 +120,7 @@ def changePower(index, newPower):
     powerBefore = node.power
     node.power = newPower
 
-    level = max(powerBefore, newPower)
+    level = max(powerBefore, newPower, 0)
     resetNotiNum(level, tree[node.parent])
 
 #부모 교환
