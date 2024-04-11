@@ -112,7 +112,7 @@ def changeBlock(index):
     node.block = not node.block
 
     upperLevel = checkImpact(node)
-    resetNotiNum(upperLevel+1, tree[node.parent])
+    resetNotiNum(upperLevel, tree[node.parent])
 
 # 파워 바꾸기
 def changePower(index, newPower):
@@ -122,7 +122,7 @@ def changePower(index, newPower):
     impactAfter = checkImpact(node)
 
     temp = max(impactBefore, impactAfter)
-    resetNotiNum(temp+1, tree[node.parent])
+    resetNotiNum(temp, tree[node.parent])
 
 #부모 교환
 def changeParent(index1, index2):
@@ -140,9 +140,10 @@ def changeParent(index1, index2):
     node2.parent = pnode1.me
     #부모들 알림 다시 기록
     upperLevel1 = checkImpact(node1)
-    resetNotiNum(upperLevel1, tree[node1.parent])
     upperLevel2 = checkImpact(node2)
-    resetNotiNum(upperLevel2, tree[node2.parent])
+    level = max(upperLevel1, upperLevel2)
+    resetNotiNum(level, tree[node1.parent])
+    resetNotiNum(level, tree[node2.parent])
 
 
 
