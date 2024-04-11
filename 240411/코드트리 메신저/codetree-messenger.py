@@ -126,12 +126,16 @@ def changePower(index, newPower):
         for i in range(temp):
             if i >= newPower:
                 now.getNoti -= 1
+            if now.parent == -1:
+                break
             now = tree[now.parent]
     elif powerBefore < newPower:
         now = tree[node.parent]
         for i in range(temp):
             if i >= powerBefore:
                 now.getNoti += 1
+            if now.parent == -1:
+                break
             now = tree[now.parent]
 
     # temp = max(powerBefore, newPower)
