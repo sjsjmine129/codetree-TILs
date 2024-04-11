@@ -122,7 +122,7 @@ def changePower(index, newPower):
     impactAfter = checkImpact(node)
 
     temp = max(impactBefore, impactAfter)
-    resetNotiNum(temp, tree[node.parent])
+    resetNotiNum(temp+1, tree[node.parent])
 
 #부모 교환
 def changeParent(index1, index2):
