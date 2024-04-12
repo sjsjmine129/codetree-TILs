@@ -2,8 +2,8 @@ import heapq
 #회전 -> 놓기 -> 앉기 -> 먹기 -> 사진(사람 수, 초밥수)
 [l, q] = map(int, input().split())
 
-belt = [{} for _ in range(l)]
-seat = [['']]*l
+# belt = [{} for _ in range(l)]
+# seat = [['']]*l
 
 sushiNum = []
 customerNum = []
