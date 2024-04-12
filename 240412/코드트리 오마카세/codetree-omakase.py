@@ -93,22 +93,25 @@ for name in sushi:
     heapq.heappush(customerNum, (lastEat, -1))
 
 # printAll()
-# print(customerNum)
-# print(sushiNum)   
+# print("customer",customerNum)
+# print("sushi", sushiNum)   
+
 
 sushiEvent = [0,0]
 customerEvent = [0,0]
 sNum = 0
 cNum = 0
 for i in photo:
-    while sushiEvent[0] <= i:
+    while sushiEvent[0] <= i :
         sNum += sushiEvent[1]
+        sushiEvent = [0,0]
         if len(sushiNum)==0:
             break
         sushiEvent = heapq.heappop(sushiNum)
-    while customerEvent[0] <= i:
+    while customerEvent[0] <= i :
         cNum += customerEvent[1]
-        if len(customerNum)==0:
+        customerEvent = [0,0]
+        if len(customerNum) == 0:
             break
         customerEvent = heapq.heappop(customerNum)  
 
