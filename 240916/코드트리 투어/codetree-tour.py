@@ -9,6 +9,7 @@ m = 0
 noEdge = 101
 costs = []
 tripQ = []
+toDelete = []
 
 
 #그래프 출력
@@ -88,11 +89,7 @@ def newTrip(id, revenue, dest):
 
 # 여행 삭제
 def deleteTrip(id):
-    for i in range(len(tripQ)):
-        if tripQ[i][1] == id:
-            del tripQ[i]
-            heapq.heapify(tripQ)
-            return
+    toDelete.append(id)
 
 
 #최고의 상품 판매
@@ -103,6 +100,11 @@ def getBest():
         return
 
     best = heapq.heappop(tripQ)
+    
+    while best[1] in toDelete:
+        toDelete.remove(best[1])
+        best = heapq.heappop(tripQ)
+        
     if best[0] <= 0:
         print(best[1])
     else:
@@ -160,7 +162,6 @@ for time in range(times):
 
     elif inputList[0] == 400:
         getBest()
-
 
     elif inputList[0] == 500:
         # print(tripQ)
