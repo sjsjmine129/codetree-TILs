@@ -89,7 +89,10 @@ def newTrip(id, revenue, dest):
 
 # 여행 삭제
 def deleteTrip(id):
-    toDelete.append(id)
+    for i in range(len(tripQ)):
+        if tripQ[i][1] == id:
+            toDelete.append(id)
+            return
 
 
 #최고의 상품 판매
