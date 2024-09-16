@@ -126,15 +126,15 @@ def changeStart(start):
     
     # 여행 상품 heap 다시 구성
     global tripQ
-    newTripQ = []
 
-    for i in tripQ:
+    for index in range(len(tripQ)):
+        i = tripQ[index]
         if costs[i[2]] == INF:
-            heapq.heappush(newTripQ,(INF, i[1], i[2], i[3]))
+            tripQ[index] = (INF, i[1], i[2], i[3])
         else:
-            heapq.heappush(newTripQ,(-(i[3]-costs[i[2]]), i[1], i[2], i[3]))
+            tripQ[index] = (-(i[3]-costs[i[2]]), i[1], i[2], i[3])
 
-    tripQ = newTripQ
+    heapq.heapify(tripQ)
 
 
 # 여행 상품 생성
