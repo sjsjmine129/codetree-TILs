@@ -103,6 +103,9 @@ def getBest():
     
     while best[1] in toDelete:
         toDelete.remove(best[1])
+        if len(tripQ) == 0:
+            print(-1)
+            return
         best = heapq.heappop(tripQ)
         
     if best[0] <= 0:
