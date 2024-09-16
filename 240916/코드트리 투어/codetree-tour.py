@@ -91,6 +91,7 @@ def deleteTrip(id):
     for i in range(len(tripQ)):
         if tripQ[i][1] == id:
             del tripQ[i]
+            heapq.heapify(tripQ)
             return
 
 
