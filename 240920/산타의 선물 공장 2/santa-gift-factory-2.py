@@ -88,6 +88,9 @@ def moveAll(src, dst):
     else:
         toMove = floor(lenBefore/2) + lenAdd - floor(belt[dst][length]/2)
     newMid = belt[dst][middle]
+    #길이가 0이면 마지막놈 바꾸기
+    if belt[dst][length] == 1:
+        belt[dst][back] = belt[dst][front]
 
     for i in range(toMove):
         newMid = present[newMid][front]
