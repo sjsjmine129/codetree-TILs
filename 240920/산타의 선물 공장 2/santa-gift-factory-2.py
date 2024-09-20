@@ -89,6 +89,7 @@ def moveAll(src, dst):
         toMove = floor(lenBefore/2) + lenAdd - floor(belt[dst][length]/2)
     newMid = belt[dst][middle]
     #길이가 0이면 마지막놈 바꾸기
+    
     if belt[dst][length] == 1:
         belt[dst][back] = belt[dst][front]
 
@@ -250,6 +251,7 @@ def getBelt(bId):
 
 for time in range(q):
     inputL = [int(i) for i in input().split()]
+    print(time,"=======")
 
     if inputL[0] == 100:
         n = inputL[1]
@@ -263,7 +265,7 @@ for time in range(q):
 
     elif inputL[0] == 200:
         moveAll(inputL[1], inputL[2])
-        # printAll()
+        printAll()
 
     elif inputL[0] == 300:
         changeFront(inputL[1], inputL[2])
