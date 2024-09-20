@@ -71,6 +71,7 @@ def buildFac(inputList):
 def moveAll(src, dst):
     if belt[src][length] == 0:
         print(belt[dst][length])
+        return
 
     # 박스들의 위치 바꾸기
     present[belt[dst][front]][front] = belt[src][back]  # dst의 맨 앞놈 앞
