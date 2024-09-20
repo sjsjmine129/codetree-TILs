@@ -63,7 +63,7 @@ def buildFac(inputList):
             # 벨트 정보 갱신
             belt[nowBelt][back] = newP
             belt[nowBelt][length] = belt[nowBelt][length] + 1
-            if belt[nowBelt][length] % 2 == 1:  # 총 개수가 홀수가 되었을 때 중간놈 변경
+            if belt[nowBelt][length] % 2 == 0 and  belt[nowBelt][length] > 2 :  # 총 개수가 짝수가 되었을 때 중간놈 변경
                 belt[nowBelt][middle] = present[belt[nowBelt][middle]][back]
 
 
