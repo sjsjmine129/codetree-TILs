@@ -82,10 +82,13 @@ def moveAll(src, dst):
     belt[dst][length] = lenBefore + lenAdd  # 개수 늘리기
     belt[dst][front] = belt[src][front]  # 맨 앞놈 지정
     # 중간놈 바꾸기
-    newMid = belt[dst][front]
-    toMove = floor(belt[dst][length]/2) - 1
+    newMid = belt[dst][middle]
+    temp = floor(lenBefore/2)
+    if lenBefore == 1 :
+        temp = 1
+    toMove = temp + lenAdd - floor(belt[dst][length]/2)
     for i in range(toMove):
-        newMid = present[newMid][back]
+        newMid = present[newMid][front]
     belt[dst][middle] = newMid
 
     #마지막놈 바꾸기
