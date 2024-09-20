@@ -117,7 +117,7 @@ def changeFront(src, dst):
         if belt[dst][length] % 2 != 1:  # 중간놈 수정
             belt[dst][middle] = present[belt[dst][middle]][back]
         if belt[dst][length] == 0:  # 만약 다 비워지면 뒤도 삭제
-            belt[dst][back] == -1
+            belt[dst][back] = -1
 
         # 이동한 선물 정보 수정
         present[dstFront][back] = -1
@@ -133,7 +133,7 @@ def changeFront(src, dst):
         if belt[src][length] % 2 != 1:  # 중간놈 수정
             belt[src][middle] = present[belt[src][middle]][back]
         if belt[src][length] == 0:  # 만약 다 비워지면 뒤도 삭제
-            belt[src][back] == -1
+            belt[src][back] = -1
 
         # 이동한 선물 정보 수정
         present[srcFront][back] = -1
