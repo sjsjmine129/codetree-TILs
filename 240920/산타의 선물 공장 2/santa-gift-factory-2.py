@@ -87,7 +87,7 @@ def moveAll(src, dst):
         toMove = 1 + lenAdd - floor(belt[dst][length]/2)
     else:
         toMove = floor(lenBefore/2) + lenAdd - floor(belt[dst][length]/2)
-        print("print",toMove)
+        # print("print",toMove)
     newMid = belt[dst][middle]
 
     for i in range(toMove):
