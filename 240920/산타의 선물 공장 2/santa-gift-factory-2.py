@@ -38,9 +38,8 @@ def printAll():
             node = present[node][front]
         print("")
 
+
 # 공장 설림
-
-
 def buildFac(inputList):
     # 데이터 입력
     for newP in range(1, len(inputList)-2):
@@ -83,24 +82,18 @@ def moveAll(src, dst):
     belt[dst][length] = lenBefore + lenAdd  # 개수 늘리기
     belt[dst][front] = belt[src][front]  # 맨 앞놈 지정
     # 중간놈 바꾸기
-    if lenBefore == 1:
-        toMove = 1 + lenAdd - floor(belt[dst][length]/2)
-    else:
-        toMove = floor(lenBefore/2) + lenAdd - floor(belt[dst][length]/2)
-        # print("print",toMove)
-    newMid = belt[dst][middle]
-
+    newMid = belt[dst][front]
+    toMove = floor(belt[dst][length]/2) - 1
     for i in range(toMove):
-        newMid = present[newMid][front]
-
+        newMid = present[newMid][back]
     belt[dst][middle] = newMid
 
     #마지막놈 바꾸기
     if lenBefore == 0:
         belt[dst][back] = belt[src][back]
     # #길이가 0이면 마지막놈 바꾸기
-    # if belt[dst][length] == 1:
-    #     belt[dst][back] = belt[dst][front]
+    if belt[dst][length] == 1:
+        belt[dst][back] = belt[dst][front]
 
 
     # src 벨트 정보 바꾸기
@@ -200,41 +193,33 @@ def splitPresent(src, dst):
 
     if beforeLen == 0:  # 원래 아무것도 없으면
         belt[dst][back] = srcMiddle  # 맨뒤 교체
-        # 중간 찾기
-        toMove = floor(halfSrcLen/2)
-        newMid = belt[dst][front]
-        if toMove != 1:
-            for i in range(toMove-1):
-                newMid = present[newMid][back]
-        belt[dst][middle] = newMid
     else:  # 원래 좀 있음
         present[beforeDstFront][front] = srcMiddle  # 기존 맨앞의 앞이 middle
-        # 중간 찾기
-        if beforeLen == 1:
-            toMove = 1 + halfSrcLen - floor(belt[dst][length]/2)
-        else:
-            toMove = floor(beforeLen/2) + halfSrcLen - floor(belt[dst][length]/2)
-        newMid = belt[dst][middle]
 
-        for i in range(toMove):
-            newMid = present[newMid][front]
+    #중간 찾기
+    newMid = belt[dst][front]
+    toMove = floor(belt[dst][length]/2) - 1
+    for i in range(toMove):
+        newMid = present[newMid][back]
+    belt[dst][middle] = newMid
 
-        belt[dst][middle] = newMid
-
+    #새 맨앞놈 -1만들기
+    present[belt[dst][front]][front] = -1
 
     # src 벨트 값 변경
     belt[src][length] = srcLen - halfSrcLen
     belt[src][front] = newSrcFront
     present[newSrcFront][front] = -1
     # 중간 찾기
-    toMove = floor(belt[src][length]/2)
     newMid = belt[src][front]
-    if toMove > 1:
-        for i in range(toMove-1):
-            newMid = present[newMid][back]
+    toMove = floor(belt[src][length]/2) - 1
+    for i in range(toMove):
+        newMid = present[newMid][back]
     belt[src][middle] = newMid
 
+
     print(belt[dst][length])
+
 
 # 선물정보 얻기
 def getPresent(pId):
@@ -256,7 +241,7 @@ def getBelt(bId):
 
 for time in range(q):
     inputL = [int(i) for i in input().split()]
-    print(time,"=======")
+    # print(time,"=======")
 
     if inputL[0] == 100:
         n = inputL[1]
@@ -270,7 +255,7 @@ for time in range(q):
 
     elif inputL[0] == 200:
         moveAll(inputL[1], inputL[2])
-        printAll()
+        # printAll()
 
     elif inputL[0] == 300:
         changeFront(inputL[1], inputL[2])
