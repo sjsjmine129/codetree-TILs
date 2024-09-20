@@ -171,6 +171,7 @@ def splitPresent(src, dst):
 
     # dst 기존 앞 노드 정보 변경
     present[belt[dst][front]][front] = endNode
+    present[endNode][back] = belt[dst][front]
 
     # dst 정보 변경
     belt[dst][front] = srcFront
@@ -222,7 +223,7 @@ for time in range(q):
 
     elif inputL[0] == 400:
         splitPresent(inputL[1], inputL[2])
-        # printAll()
+        printAll()
 
     elif inputL[0] == 500:
         getPresent(inputL[1])
