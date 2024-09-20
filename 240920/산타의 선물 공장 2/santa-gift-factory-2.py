@@ -150,6 +150,7 @@ def changeFront(src, dst):
 # 물건 나누기
 def splitPresent(src, dst):
     srcLen = belt[src][length]
+
     if srcLen <= 1:  # 1 이하면 종료
         print(belt[dst][length])
         return
@@ -158,6 +159,7 @@ def splitPresent(src, dst):
     srcFront = belt[src][front]
 
     endNode = srcFront
+
 
     for i in range(halfSrcLen-1):
         endNode = present[endNode][back]
@@ -176,6 +178,8 @@ def splitPresent(src, dst):
     # dst 정보 변경
     belt[dst][front] = srcFront
     belt[dst][length] = belt[dst][length] + halfSrcLen
+    if belt[dst][length] == 1:
+        belt[dst][back] = srcFront
 
 
     print(belt[dst][length])
@@ -223,7 +227,7 @@ for time in range(q):
 
     elif inputL[0] == 400:
         splitPresent(inputL[1], inputL[2])
-        # printAll()
+        printAll()
 
     elif inputL[0] == 500:
         getPresent(inputL[1])
