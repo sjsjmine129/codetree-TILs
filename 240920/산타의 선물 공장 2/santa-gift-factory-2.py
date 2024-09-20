@@ -219,7 +219,7 @@ for time in range(q):
 
     elif inputL[0] == 200:
         moveAll(inputL[1], inputL[2])
-        printAll()
+        # printAll()
 
     elif inputL[0] == 300:
         changeFront(inputL[1], inputL[2])
