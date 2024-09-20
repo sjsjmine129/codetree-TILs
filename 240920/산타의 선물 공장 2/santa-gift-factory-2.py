@@ -183,6 +183,7 @@ def splitPresent(src, dst):
 
     # middle 선물의 값 변경
     newSrcFront = present[srcMiddle][back]
+    present[belt[dst][front]][front] = srcMiddle
     present[srcMiddle][back] = belt[dst][front]
 
     # 가는 벨트의 정보 변경
