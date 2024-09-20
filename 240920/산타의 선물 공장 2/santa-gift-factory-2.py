@@ -223,7 +223,7 @@ for time in range(q):
 
     elif inputL[0] == 400:
         splitPresent(inputL[1], inputL[2])
-        printAll()
+        # printAll()
 
     elif inputL[0] == 500:
         getPresent(inputL[1])
