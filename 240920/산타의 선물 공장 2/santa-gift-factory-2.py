@@ -98,8 +98,8 @@ def moveAll(src, dst):
     if lenBefore == 0:
         belt[dst][back] = belt[src][back]
     # #길이가 0이면 마지막놈 바꾸기
-    if belt[dst][length] == 1:
-        belt[dst][back] = belt[dst][front]
+    # if belt[dst][length] == 1:
+    #     belt[dst][back] = belt[dst][front]
 
 
     # src 벨트 정보 바꾸기
